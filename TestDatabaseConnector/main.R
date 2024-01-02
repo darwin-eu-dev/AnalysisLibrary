@@ -52,7 +52,7 @@ print("Setting up database connection")
 
 connectionDetails <- createConnectionDetails(
   dbms = envVars[["DBMS_TYPE"]],
-  connectionString = envVars[["CONNECTION_STRING"]],
+  # connectionString = envVars[["CONNECTION_STRING"]],
   user = envVars[["DBMS_USERNAME"]],
   password = envVars[["DBMS_PASSWORD"]],
   server = paste0(envVars[["DBMS_SERVER"]], "/", envVars[["DBMS_NAME"]]),
