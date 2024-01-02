@@ -14,16 +14,15 @@ jobs:
       image: executionengine.azurecr.io/darwin-base:v0.1
       env:
         DBMS_TYPE: postgresql
-        DBMS_USERNAME: ${{ secrets.POSTGRESQL_USER }}
         DBMS_SERVER: ${{ secrets.POSTGRESQL_SERVER }}
+        DBMS_PORT: ${{ secrets.POSTGRESQL_PORT }} 
+        DBMS_NAME: ${{ secrets.POSTGRESQL_DBNAME }}
+        DBMS_USERNAME: ${{ secrets.POSTGRESQL_USER }}
         DBMS_PASSWORD: ${{ secrets.POSTGRESQL_PASSWORD }}
-        DBMS_NAME: ${{ secrets.POSTGRESQL_DATABASE }}
-        DBMS_CATALOG: ${{ secrets.POSTGRESQL_WAREHOUSE }}
         CDM_SCHEMA: ${{ secrets.POSTGRESQL_CDM_SCHEMA }}
         WRITE_SCHEMA: ${{ secrets.POSTGRESQL_SCRATCH_SCHEMA }}
-        TESTTHAT_CPUS : 1
 
-    name: Postgres test (DatabaseConnector)
+    name: Postgres
 
     strategy:
       fail-fast: true
@@ -40,15 +39,16 @@ jobs:
       image: executionengine.azurecr.io/darwin-base:v0.1
       env:
         DBMS_TYPE: 'sql server'
-        DBMS_USER:      ${{ secrets.SQL_SERVER_USER }}
         DBMS_SERVER:    ${{ secrets.SQL_SERVER_SERVER }}
+        DBMS_NAME:      ${{ secrets.SQL_SERVER_DBNAME }}
+        DBMS_PORT:      ${{ secrets.SQL_SERVER_PORT }}
+        DBMS_USER:      ${{ secrets.SQL_SERVER_USER }}
         DBMS_PASSWORD:  ${{ secrets.SQL_SERVER_PASSWORD }}
-        DBMS_NAME:      ${{ secrets.SQL_SERVER_DATABASE }}
         CDM_SCHEMA:     ${{ secrets.SQL_SERVER_CDM_SCHEMA }}
         WRITE_SCHEMA:   ${{ secrets.SQL_SERVER_SCRATCH_SCHEMA }}
         TESTTHAT_CPUS : 1
 
-    name: Sql Server test (DatabaseConnector)
+    name: Sql Server
 
     strategy:
       fail-fast: true
