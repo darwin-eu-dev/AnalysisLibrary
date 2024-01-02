@@ -27,7 +27,7 @@ for (i in seq_along(envVars)) {
   var   <- names(envVars)[i]
   value <- envVars[i]
   if (var != "DBMS_PASSWORD") {
-    print(paste(var, ":", value))
+    print(paste(var, ":", nchar(value)))
   } else {
     print(paste(var, ": *************"))
   }

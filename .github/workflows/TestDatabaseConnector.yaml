@@ -46,7 +46,6 @@ jobs:
         DBMS_PASSWORD:  ${{ secrets.SQL_SERVER_PASSWORD }}
         CDM_SCHEMA:     ${{ secrets.SQL_SERVER_CDM_SCHEMA }}
         WRITE_SCHEMA:   ${{ secrets.SQL_SERVER_SCRATCH_SCHEMA }}
-        TESTTHAT_CPUS : 1
 
     name: Sql Server
 
@@ -55,7 +54,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
       - name: Run tests
         run: R -e 'source("./TestDatabaseConnector/main.R")'
 
