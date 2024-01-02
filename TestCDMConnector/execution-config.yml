@@ -1,0 +1,4 @@
+studyId: "1"
+studyTitle: "Test CDMConnector"
+engine: "executionengine.azurecr.io/darwin-base:v0.1"
+entrypoint: "TestCDMConnector/main.R"

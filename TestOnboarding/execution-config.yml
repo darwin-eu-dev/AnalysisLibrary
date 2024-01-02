@@ -1,0 +1,20 @@
+studyId: "onboarding"
+studyTitle: "Darwin EU Onboarding"
+engine: "executionengine.azurecr.io/darwin-base:v0.1"
+entrypoint: "TestOnboarding/codeToRun.R"
+params:
+  - label: "WebAPI URL"
+    description: "URL to the WebAPI that your local Atlas instance uses, e.g. http://host.docker.internal:8080/WebAPI"
+    type: "string"
+    key: "WEBAPI_BASEURL"
+    value: ""
+  - label: "Authors"
+    description: "Authors in the CdmOnboarding document"
+    type: "string"
+    key: "AUTHORS"
+    value: <author1>,<author2>
+  - label: "Achilles"
+    description: "Execute Achilles? If False, then resultsDatabaseSchema should contain the Achilles results."
+    type: "boolean"
+    key: "EXECUTE_ACHILLES"
+    value: TRUE

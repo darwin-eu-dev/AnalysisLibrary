@@ -1,0 +1,15 @@
+studyId: "0"
+studyTitle: "Test DatabaseConnector"
+engine: "executionengine.azurecr.io/darwin-base:v0.1"
+entrypoint: "TestDatabaseConnector/main.R"
+params:
+  - label: "A string parameter"
+    description: ""
+    type: "string"
+    key: "STRING"
+    value: "...."
+  - label: "A boolean parameter"
+    description: ""
+    type: "boolean"
+    key: "BOOL"
+    value: TRUE

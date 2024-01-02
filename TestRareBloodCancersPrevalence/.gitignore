@@ -1,0 +1,10 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+postgresql-42.2.18.jar
+CodeToRun_local.R
+Results/CPRD GOLD/*
+*.zip
+*log.txt
+.Rprofile
