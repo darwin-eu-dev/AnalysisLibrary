@@ -8,7 +8,7 @@ vars <- c("DBMS_TYPE",
           "DBMS_SERVER",
           "DBMS_NAME",
           "DBMS_PORT",
-          "DBMS_USERNAME",
+          "DBMS_USER",
           "DBMS_PASSWORD",
           "CDM_SCHEMA",
           "WRITE_SCHEMA"

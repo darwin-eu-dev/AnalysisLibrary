@@ -14,6 +14,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2 
       
+      - name: Cache Docker image layers
+        uses: actions/cache@v2
+        with:
+          path: |
+            /var/lib/docker
+          key: ${{ runner.os }}-executionengine.azurecr.io/darwin-base:v0.1
+            
       - name: pull docker image
         run: docker pull executionengine.azurecr.io/darwin-base:v0.1
       
