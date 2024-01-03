@@ -1,4 +1,5 @@
 # print(Sys.getenv())
+source("./TestCDMConnector/cdm_from_environment.R")
 
 vars <- c("DBMS_TYPE",
           "DATA_SOURCE_NAME",
@@ -20,7 +21,7 @@ for (v in vars) {
 }
 
 
-source("cdm_from_environment.R")
+
 
 library(CDMConnector)
 library(dplyr, warn.conflicts = F)

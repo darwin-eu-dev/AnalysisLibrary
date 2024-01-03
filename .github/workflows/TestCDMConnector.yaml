@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: [main, master]
 
-name: TestDatabaseConnector
+name: Test CDMConnector cdm_from_environment
 
 jobs:
   Postgres-test:
