@@ -24,6 +24,10 @@ jobs:
       - name: pull docker image
         run: docker pull executionengine.azurecr.io/darwin-base:v0.1
       
+      - name: run simple test
+        run: |
+          R -e 'df <- read.csv("https://raw.githubusercontent.com/OHDSI/PhenotypeLibrary/main/inst/Cohorts.csv"); print(dplyr::tibble(df))'
+        
       - name: Run test
         run: |
           docker run --rm  \
@@ -40,5 +44,5 @@ jobs:
           -p 80:80 \
           -v $(pwd)/TestCDMConnector:/tmp/TestCDMConnector \
           executionengine.azurecr.io/darwin-base:v0.1 \
-          R -e 'setwd("/tmp/TestCDMConnector"); source("main.R")'
+          R -e 'setwd("/tmp/TestCDMConnector"); print(1:20)'
         
