@@ -40,7 +40,13 @@ jobs:
           -p 80:80 \
           -v $(pwd)/TestCDMConnector:/tmp/TestCDMConnector \
           executionengine.azurecr.io/darwin-base:v0.1 \
-          R -e 'df <- read.csv("https://raw.githubusercontent.com/OHDSI/PhenotypeLibrary/main/inst/Cohorts.csv"); print(dplyr::tibble(df)); setwd("/tmp/TestCDMConnector"); print(1:200)'
+          R -e 'con <- DBI::dbConnect(RPostgres::Postgres(), \
+                      dbname = Sys.getenv("DBMS_NAME"), \
+                      host = Sys.getenv("DBMS_SERVER"), \
+                      user = Sys.getenv("DBMS_USER"), \
+                      password = Sys.getenv("DBMS_PASSWORD")) \
+           cdm_schema <- Sys.getenv("CDM_SCHEMA") \
+           print(DBI::dbGetQuery(con, glue::glue("select count * as n_persons from {cdm_schema}.person")))'
         
       - name: Cache Docker image layers
         uses: actions/cache@v2
