@@ -40,7 +40,7 @@ jobs:
           -p 80:80 \
           -v $(pwd)/TestCDMConnector:/tmp/TestCDMConnector \
           executionengine.azurecr.io/darwin-base:v0.1 \
-          R -e 'df <- read.csv("https://raw.githubusercontent.com/OHDSI/PhenotypeLibrary/main/inst/Cohorts.csv"); print(dplyr::tibble(df)); setwd("/tmp/TestCDMConnector"); print(1:20)'
+          R -e 'df <- read.csv("https://raw.githubusercontent.com/OHDSI/PhenotypeLibrary/main/inst/Cohorts.csv"); print(dplyr::tibble(df)); setwd("/tmp/TestCDMConnector"); print(1:200)'
         
       - name: Cache Docker image layers
         uses: actions/cache@v2
