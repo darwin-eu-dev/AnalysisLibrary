@@ -30,7 +30,7 @@ jobs:
           -e DBMS_PASSWORD=${{ secrets.POSTGRESQL_PASSWORD }} \
           -e CDM_SCHEMA=${{ secrets.POSTGRESQL_CDM_SCHEMA }} \
           -e WRITE_SCHEMA=${{ secrets.POSTGRESQL_SCRATCH_SCHEMA }} \
-          -p 80:80 
+          -p 80:80 \
           -v $(pwd)/TestCDMConnector:/tmp/TestCDMConnector \
           executionengine.azurecr.io/darwin-base:v0.1 \
           R -e 'source("/tmp/TestCDMConnector/main.R")'
