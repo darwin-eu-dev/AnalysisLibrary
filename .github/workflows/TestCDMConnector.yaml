@@ -16,6 +16,8 @@ jobs:
         - 80
       env:
         DBMS_TYPE: postgresql
+        DATA_SOURCE_NAME: 'synpuf'
+        CDM_VERSION: 5.3
         DBMS_SERVER: ${{ secrets.POSTGRESQL_SERVER }}
         DBMS_PORT: ${{ secrets.POSTGRESQL_PORT }} 
         DBMS_NAME: ${{ secrets.POSTGRESQL_DBNAME }}
@@ -43,6 +45,8 @@ jobs:
         - 80
       env:
         DBMS_TYPE: 'sql server'
+        DATA_SOURCE_NAME: 'synpuf'
+        CDM_VERSION: 5.3
         DBMS_SERVER:    ${{ secrets.SQL_SERVER_SERVER }}
         DBMS_NAME:      ${{ secrets.SQL_SERVER_DBNAME }}
         DBMS_PORT:      ${{ secrets.SQL_SERVER_PORT }}
