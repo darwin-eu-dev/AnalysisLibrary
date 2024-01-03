@@ -33,5 +33,5 @@ jobs:
           -p 80:80 \
           -v $(pwd)/TestCDMConnector:/tmp/TestCDMConnector \
           executionengine.azurecr.io/darwin-base:v0.1 \
-          R -e 'source("/tmp/TestCDMConnector/main.R")'
+          R -e 'setwd("/tmp/TestCDMConnector"); source("main.R")'
         

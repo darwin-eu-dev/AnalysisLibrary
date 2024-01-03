@@ -1,5 +1,5 @@
 # print(Sys.getenv())
-source("./TestCDMConnector/cdm_from_environment.R")
+source("./cdm_from_environment.R")
 
 vars <- c("DBMS_TYPE",
           "DATA_SOURCE_NAME",
