@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v2 
       
       - name: pull docker image
-      - run: docker pull executionengine.azurecr.io/darwin-base:v0.1
+        run: docker pull executionengine.azurecr.io/darwin-base:v0.1
       
       - name: Run test
         run: |
