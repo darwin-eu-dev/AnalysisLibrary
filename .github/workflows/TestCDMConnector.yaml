@@ -11,12 +11,13 @@ jobs:
     if: github.repository == 'darwin-eu-dev/AnalysisLibrary'
     runs-on: ubuntu-latest
     
-        steps:
+    steps:
       - uses: actions/checkout@v2 
       
+      - name: pull docker image
       - run: docker pull executionengine.azurecr.io/darwin-base:v0.1
       
-      - name: Run tests
+      - name: Run test
         run: docker run --rm  \
 -e DBMS_TYPE=postgresql \
 -e DATA_SOURCE_NAME=synpuf \
