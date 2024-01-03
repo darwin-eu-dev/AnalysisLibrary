@@ -23,10 +23,6 @@ jobs:
             
       - name: pull docker image
         run: docker pull executionengine.azurecr.io/darwin-base:v0.1
-      
-      - name: run simple test
-        run: |
-        R -e 
         
       - name: Run test
         run: |
