@@ -12,8 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: executionengine.azurecr.io/darwin-base:v0.1
-      ports:
-        - 80
       env:
         DBMS_TYPE: postgresql
         DATA_SOURCE_NAME: 'synpuf'
@@ -25,6 +23,8 @@ jobs:
         DBMS_PASSWORD: ${{ secrets.POSTGRESQL_PASSWORD }}
         CDM_SCHEMA: ${{ secrets.POSTGRESQL_CDM_SCHEMA }}
         WRITE_SCHEMA: ${{ secrets.POSTGRESQL_SCRATCH_SCHEMA }}
+      ports:
+        - 80
 
     name: Postgres
 
@@ -41,8 +41,6 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: executionengine.azurecr.io/darwin-base:v0.1
-      ports:
-        - 80
       env:
         DBMS_TYPE: 'sql server'
         DATA_SOURCE_NAME: 'synpuf'
@@ -54,6 +52,8 @@ jobs:
         DBMS_PASSWORD:  ${{ secrets.SQL_SERVER_PASSWORD }}
         CDM_SCHEMA:     ${{ secrets.SQL_SERVER_CDM_SCHEMA }}
         WRITE_SCHEMA:   ${{ secrets.SQL_SERVER_SCRATCH_SCHEMA }}
+      ports:
+        - 80
 
     name: Sql Server
 
