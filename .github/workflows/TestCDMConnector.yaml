@@ -1,0 +1,59 @@
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+name: TestDatabaseConnector
+
+jobs:
+  Postgres-test:
+    if: github.repository == 'darwin-eu-dev/AnalysisLibrary'
+    runs-on: ubuntu-latest
+    container:
+      image: executionengine.azurecr.io/darwin-base:v0.1
+      env:
+        DBMS_TYPE: postgresql
+        DBMS_SERVER: ${{ secrets.POSTGRESQL_SERVER }}
+        DBMS_PORT: ${{ secrets.POSTGRESQL_PORT }} 
+        DBMS_NAME: ${{ secrets.POSTGRESQL_DBNAME }}
+        DBMS_USERNAME: ${{ secrets.POSTGRESQL_USER }}
+        DBMS_PASSWORD: ${{ secrets.POSTGRESQL_PASSWORD }}
+        CDM_SCHEMA: ${{ secrets.POSTGRESQL_CDM_SCHEMA }}
+        WRITE_SCHEMA: ${{ secrets.POSTGRESQL_SCRATCH_SCHEMA }}
+
+    name: Postgres
+
+    strategy:
+      fail-fast: true
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tests
+        run: R -e 'source("./TestCDMConnector/main.R")'
+
+  SqlServer-test:
+    if: github.repository == 'darwin-eu-dev/AnalysisLibrary'
+    runs-on: ubuntu-latest
+    container:
+      image: executionengine.azurecr.io/darwin-base:v0.1
+      env:
+        DBMS_TYPE: 'sql server'
+        DBMS_SERVER:    ${{ secrets.SQL_SERVER_SERVER }}
+        DBMS_NAME:      ${{ secrets.SQL_SERVER_DBNAME }}
+        DBMS_PORT:      ${{ secrets.SQL_SERVER_PORT }}
+        DBMS_USER:      ${{ secrets.SQL_SERVER_USER }}
+        DBMS_PASSWORD:  ${{ secrets.SQL_SERVER_PASSWORD }}
+        CDM_SCHEMA:     ${{ secrets.SQL_SERVER_CDM_SCHEMA }}
+        WRITE_SCHEMA:   ${{ secrets.SQL_SERVER_SCRATCH_SCHEMA }}
+
+    name: Sql Server
+
+    strategy:
+      fail-fast: true
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tests
+        run: R -e 'source("./TestCDMConnector/main.R")'
+
