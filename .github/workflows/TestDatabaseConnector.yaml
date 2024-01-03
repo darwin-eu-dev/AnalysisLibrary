@@ -10,6 +10,8 @@ jobs:
   Postgres-test:
     if: github.repository == 'darwin-eu-dev/AnalysisLibrary'
     runs-on: ubuntu-latest
+    ports:
+        - 80
     container:
       image: executionengine.azurecr.io/darwin-base:v0.1
       env:
@@ -37,6 +39,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: executionengine.azurecr.io/darwin-base:v0.1
+      ports:
+        - 80
       env:
         DBMS_TYPE: 'sql server'
         DBMS_SERVER:    ${{ secrets.SQL_SERVER_SERVER }}
