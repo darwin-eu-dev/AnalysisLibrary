@@ -7,7 +7,7 @@ cdm_from_environment <- function(write_prefix = "") {
             "DBMS_SERVER",
             "DBMS_NAME",
             "DBMS_PORT",
-            "DBMS_USERNAME",
+            "DBMS_USER",
             "DBMS_PASSWORD",
             "CDM_SCHEMA",
             "WRITE_SCHEMA")
@@ -49,7 +49,7 @@ cdm_from_environment <- function(write_prefix = "") {
     con <- DBI::dbConnect(drv = drv,
                           dbname   = Sys.getenv("DBMS_NAME"),
                           host     = Sys.getenv("DBMS_SERVER"),
-                          user     = Sys.getenv("DBMS_USERNAME"),
+                          user     = Sys.getenv("DBMS_USER"),
                           password = Sys.getenv("DBMS_PASSWORD"),
                           port     = Sys.getenv("DBMS_PORT"))
 
@@ -63,7 +63,7 @@ cdm_from_environment <- function(write_prefix = "") {
                           Driver   = "ODBC Driver 17 for SQL Server",
                           Server   = Sys.getenv("DBMS_SERVER"),
                           Database = Sys.getenv("DBMS_NAME"),
-                          UID      = Sys.getenv("DBMS_USERNAME"),
+                          UID      = Sys.getenv("DBMS_USER"),
                           PWD      = Sys.getenv("DBMS_PASSWORD"),
                           TrustServerCertificate="yes",
                           Port     = Sys.getenv("DBMS_PORT"))
@@ -78,7 +78,7 @@ cdm_from_environment <- function(write_prefix = "") {
                           DRIVER    = "SnowflakeDSIIDriver",
                           SERVER    = Sys.getenv("DBMS_SERVER"),
                           DATABASE  = Sys.getenv("DBMS_NAME"),
-                          UID       = Sys.getenv("DBMS_USERNAME"),
+                          UID       = Sys.getenv("DBMS_USER"),
                           PWD       = Sys.getenv("DBMS_PASSWORD"),
                           WAREHOUSE = "COMPUTE_WH_XS")
 
