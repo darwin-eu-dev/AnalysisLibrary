@@ -54,7 +54,7 @@ jobs:
           -e CDM_VERSION=5.3 \
           -e DBMS_SERVER=${{ secrets.SNOWFLAKE_SERVER }} \
           -e DBMS_PORT=443 \
-          -e DBMS_NAME=${{ secrets.SNOWFLAKE_DBNAME }} \
+          -e DBMS_NAME=OMOP_SYNTHETIC_DATASET \
           -e DBMS_USER=${{ secrets.SNOWFLAKE_USER }} \
           -e DBMS_PASSWORD=${{ secrets.SNOWFLAKE_PASSWORD }} \
           -e DBMS_CATALOG=${{ secrets.SNOWFLAKE_WAREHOUSE }} \
@@ -63,3 +63,6 @@ jobs:
           -v $(pwd)/TestCDMConnector:/tmp/TestCDMConnector \
           executionengine.azurecr.io/darwin-base:v0.1 \
           R -e 'setwd("/tmp/TestCDMConnector"); source("main.R")'
+
+# -e DBMS_NAME=${{ secrets.SNOWFLAKE_DBNAME }} \
+
