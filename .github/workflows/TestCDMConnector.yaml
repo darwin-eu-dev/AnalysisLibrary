@@ -57,7 +57,7 @@ jobs:
           -e DBMS_NAME=${{ secrets.SNOWFLAKE_DBNAME }} \
           -e DBMS_USER=${{ secrets.SNOWFLAKE_USER }} \
           -e DBMS_PASSWORD=${{ secrets.SNOWFLAKE_PASSWORD }} \
-          -e DBMS_CATALOG=${{ secrets.SNOWFLAKE_WAREHOUSE }}
+          -e DBMS_CATALOG=${{ secrets.SNOWFLAKE_WAREHOUSE }} \
           -e CDM_SCHEMA=${{ secrets.SNOWFLAKE_CDM_SCHEMA }} \
           -e WRITE_SCHEMA=${{ secrets.SNOWFLAKE_SCRATCH_SCHEMA }} \
           -v $(pwd)/TestCDMConnector:/tmp/TestCDMConnector \
