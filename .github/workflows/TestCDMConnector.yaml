@@ -22,8 +22,8 @@ jobs:
             /var/lib/docker
           key: ${{ runner.os }}-executionengine.azurecr.io/darwin-base:v0.1
           
-      - name: print results of cache step
-        run: cat {{ steps.cache.outputs }}
+      # - name: print results of cache step
+      #   run: cat {{ steps.cache.outputs }}
             
       - name: pull docker image
         run: docker pull executionengine.azurecr.io/darwin-base:v0.1
