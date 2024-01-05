@@ -23,7 +23,7 @@ jobs:
           key: ${{ runner.os }}-executionengine.azurecr.io/darwin-base:v0.1
           
       - name: check cach hit
-        run: cat ${{ steps.cache-docker.outputs.cache-hit != 'true' }}
+        run: echo ${{ steps.cache-docker.outputs.cache-hit != 'true' }}
       
       - if: ${{ steps.cache-docker.outputs.cache-hit != 'true' }}
         name: pull docker image
