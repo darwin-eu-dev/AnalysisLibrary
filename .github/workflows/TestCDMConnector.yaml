@@ -28,7 +28,7 @@ jobs:
       - name: pull docker image
         run: docker pull executionengine.azurecr.io/darwin-base:v0.1
         
-      - name: Run test
+      - name: Run postgres test
         run: |
           docker run --rm  \
           -e DBMS_TYPE=postgresql \
@@ -46,4 +46,20 @@ jobs:
           executionengine.azurecr.io/darwin-base:v0.1 \
           R -e 'setwd("/tmp/TestCDMConnector"); source("main.R")'
           
-          
+      - name: Run snowflake test
+        run: |
+          docker run --rm  \
+          -e DBMS_TYPE=snowflake \
+          -e DATA_SOURCE_NAME=synpuf \
+          -e CDM_VERSION=5.3 \
+          -e DBMS_SERVER=${{ secrets.SNOWFLAKE_SERVER }} \
+          -e DBMS_PORT=${{ secrets.SNOWFLAKE_PORT }}  \
+          -e DBMS_NAME=${{ secrets.SNOWFLAKE_DBNAME }} \
+          -e DBMS_USER=${{ secrets.SNOWFLAKE_USER }} \
+          -e DBMS_PASSWORD=${{ secrets.SNOWFLAKE_PASSWORD }} \
+          -e CDM_SCHEMA=${{ secrets.SNOWFLAKE_CDM_SCHEMA }} \
+          -e WRITE_SCHEMA=${{ secrets.SNOWFLAKE_SCRATCH_SCHEMA }} \
+          -p 80:80 \
+          -v $(pwd)/TestCDMConnector:/tmp/TestCDMConnector \
+          executionengine.azurecr.io/darwin-base:v0.1 \
+          R -e 'setwd("/tmp/TestCDMConnector"); source("main.R")'
