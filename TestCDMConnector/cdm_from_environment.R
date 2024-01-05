@@ -40,18 +40,25 @@ cdm_from_environment <- function(write_prefix = "") {
   stringr::str_count(Sys.getenv("CDM_SCHEMA"), "\\.")
 
   if (Sys.getenv("DBMS_TYPE") %in% c("postgresql", "redshift")) {
-
+    print(Sys.getenv("DBMS_TYPE"))
+    print(Sys.getenv("DBMS_PORT"))
+    
     drv <- switch (Sys.getenv("DBMS_TYPE"),
                    "postgresql" = RPostgres::Postgres(),
                    "redshift" = RPostgres::Redshift()
     )
+    # con <- DBI::dbConnect(RPostgres::Postgres(), 
+    #                       dbname = Sys.getenv("DBMS_NAME"), 
+    #                       host = Sys.getenv("DBMS_SERVER"), 
+    #                       user = Sys.getenv("DBMS_USER"), 
+    #                       password = Sys.getenv("DBMS_PASSWORD")); 
 
     con <- DBI::dbConnect(drv = drv,
                           dbname   = Sys.getenv("DBMS_NAME"),
                           host     = Sys.getenv("DBMS_SERVER"),
                           user     = Sys.getenv("DBMS_USER"),
-                          password = Sys.getenv("DBMS_PASSWORD"),
-                          port     = Sys.getenv("DBMS_PORT"))
+                          password = Sys.getenv("DBMS_PASSWORD"))#,
+                          # port     = Sys.getenv("DBMS_PORT"))
 
     if (!DBI::dbIsValid(con)) {
       cli::cli_abort("Database connection failed!")
