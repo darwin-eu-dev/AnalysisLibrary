@@ -29,9 +29,6 @@ for (v in vars) {
   }
 }
 
-
-
-
 library(CDMConnector)
 library(dplyr, warn.conflicts = F)
 
