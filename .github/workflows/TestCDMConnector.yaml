@@ -50,7 +50,7 @@ jobs:
           -e DATA_SOURCE_NAME=synpuf \
           -e CDM_VERSION=5.3 \
           -e DBMS_SERVER=${{ secrets.SNOWFLAKE_SERVER }} \
-          -e DBMS_PORT=${{ secrets.SNOWFLAKE_PORT }}  \
+          -e DBMS_PORT=443 \
           -e DBMS_NAME=${{ secrets.SNOWFLAKE_DBNAME }} \
           -e DBMS_USER=${{ secrets.SNOWFLAKE_USER }} \
           -e DBMS_PASSWORD=${{ secrets.SNOWFLAKE_PASSWORD }} \

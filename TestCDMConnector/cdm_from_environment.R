@@ -82,7 +82,8 @@ cdm_from_environment <- function(write_prefix = "") {
                           DATABASE  = Sys.getenv("DBMS_NAME"),
                           UID       = Sys.getenv("DBMS_USER"),
                           PWD       = Sys.getenv("DBMS_PASSWORD"),
-                          WAREHOUSE = "COMPUTE_WH_XS")
+                          WAREHOUSE = Sys.getenv("DBMS_WAREHOUSE"),
+                          PORT      = Sys.getenv("DBMS_PORT"))
 
     if (!DBI::dbIsValid(con)) {
       cli::cli_abort("Database connection failed!")
