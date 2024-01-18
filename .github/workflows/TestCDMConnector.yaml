@@ -64,5 +64,5 @@ jobs:
           executionengine.azurecr.io/darwin-base:v0.1 \
           R -e 'setwd("/tmp/TestCDMConnector"); source("main.R")'
 
-# -e DBMS_NAME=${{ secrets.SNOWFLAKE_DBNAME }} \
+# -e DBMS_NAME=${{ secrets.SNOWFLAKE_DBNAME }} \[]
 
